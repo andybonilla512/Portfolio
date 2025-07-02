@@ -8,3 +8,5 @@ header_pages:
   - contact.md
 sass:
   style: compressed
+include:
+  - _includes/head-custom.html
