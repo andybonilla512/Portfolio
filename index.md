@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Andy Bonilla
+title: Portfolio
 permalink: /
 ---
 
