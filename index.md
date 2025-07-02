@@ -19,7 +19,8 @@ Electronics Engineer | Hardware Developer | Data Engineer
 ## 🌟 What can you find here?
 
 - 📄 [About Me](about/)
-- 💼 [Professional Experience](projects/)
+- 💼 [Professional Experience](experience/)
+- 💡[Projects](projects/)
 - 📬 [Contact](contact/)
 - 📥 [Download CV](assets/CV_AndyBonilla.pdf)
 
