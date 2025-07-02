@@ -4,14 +4,25 @@ title: Home
 permalink: /
 ---
 
-Bienvenido a mi portafolio.
+# 👋 ¡Hola! Soy Andy Bonilla
 
-[About Me](about/)  
+Electronics Engineer | Hardware Developer | Data Engineer  
+Apasionado por la innovación, el diseño de circuitos impresos y la ingeniería de datos.
 
-[Professional Experience](experience/)
+---
 
-[Projects](projects/)  
+## 🌟 ¿Qué puedes encontrar aquí?
 
-[Contact](contact/)
+- 📄 [Sobre mí](about/)
+- 💼 [Experiencia profesional](projects/)
+- 📬 [Contacto](contact/)
+- 📥 [Descargar CV](assets/CV_AndyBonilla.pdf)
 
-[Descargar CV](assets/CV_AndyBonilla.pdf)
+---
+
+## 🧠 Áreas de interés
+
+- Diseño de PCBs y hardware embebido
+- Automatización y control industrial
+- Ingeniería de datos, ETLs y modelado
+- Investigación y aprendizaje continuo
