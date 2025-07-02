@@ -3,5 +3,6 @@ theme: minima
 
 header_pages:
   - about.md
+  - experience.md
   - projects.md
   - contact.md
