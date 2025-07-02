@@ -3,7 +3,10 @@ layout: page
 title: Home
 permalink: /
 ---
-<img src="assets/foto_andy.jpeg" alt="Andy Bonilla" width="150" style="border-radius: 50%;" />
+
+<p align="center">
+  <img src="assets/foto_andy.jpeg" alt="Andy Bonilla" width="200" />
+</p>
 
 # 👋 ¡Hola! Soy Andy Bonilla
 
