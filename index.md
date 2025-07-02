@@ -1,6 +1,5 @@
 ---
 layout: home
-title: Andy Bonillas's Portfolio
 ---
 
 ## 🎯 Professional Objective
