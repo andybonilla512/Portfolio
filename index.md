@@ -29,8 +29,7 @@ Electronics Engineer | Hardware Developer | Data Engineer
 ## 🧠 Areas of Interest
 
 - PCB and embedded hardware design  
-- Industrial automation and control  
-- Data engineering, ETL, and data modeling  
+- Signal and Power Integrity  
 - Research and continuous learning
 
 ---
