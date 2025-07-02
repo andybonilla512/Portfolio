@@ -1,6 +1,9 @@
 ---
-layout: home
+layout: page
+title: Andy Bonilla
+permalink: /
 ---
+
 
 ## 🎯 Professional Objective
 
