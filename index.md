@@ -8,25 +8,30 @@ permalink: /
   <img src="assets/foto_andy.jpeg" alt="Andy Bonilla" width="200" />
 </p>
 
-# 👋 ¡Hola! Soy Andy Bonilla
+<h1 align="center">👋 Hello! I'm Andy Bonilla</h1>
 
+<p align="center">
 Electronics Engineer | Hardware Developer | Data Engineer  
-Apasionado por la innovación, el diseño de circuitos impresos y la ingeniería de datos.
+</p>
 
 ---
 
-## 🌟 ¿Qué puedes encontrar aquí?
+## 🌟 What can you find here?
 
-- 📄 [Sobre mí](about/)
-- 💼 [Experiencia profesional](projects/)
-- 📬 [Contacto](contact/)
-- 📥 [Descargar CV](assets/CV_AndyBonilla.pdf)
+- 📄 [About Me](about/)
+- 💼 [Professional Experience](projects/)
+- 📬 [Contact](contact/)
+- 📥 [Download CV](assets/CV_AndyBonilla.pdf)
 
 ---
 
-## 🧠 Áreas de interés
+## 🧠 Areas of Interest
 
-- Diseño de PCBs y hardware embebido
-- Automatización y control industrial
-- Ingeniería de datos, ETLs y modelado
-- Investigación y aprendizaje continuo
+- PCB and embedded hardware design  
+- Industrial automation and control  
+- Data engineering, ETL, and data modeling  
+- Research and continuous learning
+
+---
+
+## 🖼️ Featured Project
