@@ -3,8 +3,7 @@ layout: page
 title: Home
 permalink: /
 ---
-
-![imagen](https://github.com/user-attachments/assets/ea78490b-da98-4fa4-9064-1c2d7374a9fd)
+<img src="assets/foto_andy.jpeg" alt="Andy Bonilla" width="150" style="border-radius: 50%;" />
 
 # 👋 ¡Hola! Soy Andy Bonilla
 
