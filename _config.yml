@@ -6,3 +6,5 @@ header_pages:
   - experience.md
   - projects.md
   - contact.md
+sass:
+  style: compressed
