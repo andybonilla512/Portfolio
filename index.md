@@ -4,6 +4,8 @@ title: Home
 permalink: /
 ---
 
+![imagen](https://github.com/user-attachments/assets/ea78490b-da98-4fa4-9064-1c2d7374a9fd)
+
 # 👋 ¡Hola! Soy Andy Bonilla
 
 Electronics Engineer | Hardware Developer | Data Engineer  
