@@ -4,11 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-<p align="center">
-  <img src="assets/WhatsApp Image 2025-08-30 at 3.48.49 PM.jpeg" alt="Andy Bonilla" width="200" />
-</p>
-
-![WhatsApp Image 2025-08-30 at 3 48 49 PM](https://github.com/user-attachments/assets/7c096a1f-4e02-46a7-9799-9365143bfbe4)
+![WhatsApp Image 2025-08-30 at 3 48 49 PM](https://github.com/user-attachments/assets/7c096a1f-4e02-46a7-9799-9365143bfbe4=250x)
 
 
 ## 👤 About Me
