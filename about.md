@@ -15,7 +15,6 @@ I am an Electronics Engineer with solid experience in programming microcontrolle
   <img src="assets/ANDYGR 69.jpg" alt="Andy Bonilla" width="300" />
 </p>
 
----
 
 ## 🎓 Education
 
