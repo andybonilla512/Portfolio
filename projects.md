@@ -4,6 +4,6 @@ title: Projects
 permalink: /projects/
 ---
 
-## 🛠️ Projects
+## Modular analog synthesizer upgrade and user configuration memory module design (Undergrad project)
 
-Aquí algunos de mis proyectos destacados:
+![14_carcasa_final](https://github.com/user-attachments/assets/5fd21cc2-cd73-4246-a1a7-48ae68ab1ceb)
