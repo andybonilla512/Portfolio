@@ -5,13 +5,7 @@ permalink: /about/
 ---
 
 <p align="center">
-  <img src="assets/foto_andy.jpeg" alt="Andy Bonilla" width="200" />
-</p>
-
-<h1 align="center">👋 Hello! I'm Andy Bonilla</h1>
-
-<p align="center">
-Electronics Engineer | Hardware Developer | Data Engineer  
+  <img src="assets/ANDYGR 69.jpg" alt="Andy Bonilla" width="200" />
 </p>
 
 ## 👤 About Me
