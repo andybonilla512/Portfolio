@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 <p align="center">
-  <img src="https://github.com/andybonilla512/Portfolio/tree/main/assets/foto_andy.jpeg" alt="Andy Bonilla" width="200" />
+  <img src="foto_andy.jpeg" alt="Andy Bonilla" width="200" />
 </p>
 
 ## 👤 About Me
