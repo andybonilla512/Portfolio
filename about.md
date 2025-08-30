@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 <p align="center">
-  <img src="/ANDYGR_69.jpg" alt="Andy Bonilla" width="200" />
+  <img src="assets/WhatsApp Image 2025-08-30 at 3.48.49 PM.jpeg" alt="Andy Bonilla" width="200" />
 </p>
 
 ## 👤 About Me
