@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-![WhatsApp Image 2025-08-30 at 3 48 49 PM](https://github.com/user-attachments/assets/7c096a1f-4e02-46a7-9799-9365143bfbe4=250x)
+![WhatsApp Image 2025-08-30 at 3 48 49 PM](https://github.com/user-attachments/assets/7c096a1f-4e02-46a7-9799-9365143bfbe4 =250x)
 
 
 ## 👤 About Me
