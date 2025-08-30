@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 <p align="center">
-  <img src="assets/ANDYGR_69.jpg" alt="Andy Bonilla" width="200"/>
+  <img src="assets/foto_andy.jpeg" alt="Andy Bonilla" width="200" />
 </p>
 
 ## 👤 About Me
