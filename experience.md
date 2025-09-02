@@ -4,6 +4,10 @@ title: Experience
 permalink: /experience/
 ---
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/949456cc-9744-43f7-a9e8-7c643a72ffd0" alt="AndyBam" width="300" />
+</p>
+
 ## 💼 Experience
 
 **Data Engineer in AML/CFT Risks** – Banco Agromercantil de Guatemala  
