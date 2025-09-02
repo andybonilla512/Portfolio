@@ -29,6 +29,6 @@ permalink: /experience/
 - **Operating Systems:** Windows, Unix, Linux  
 - **Programming Languages:** C, C++, SQL, Python  
 - **Office Software:** Microsoft Office, Open Office, LaTeX  
-- **Scientific Software:** MATLAB, Mathematica, NI LabVIEW  
+- **Scientific Software:** MATLAB, Mathematica, NI LabVIEW, Altium, LTspice, EasyEDA  
 - **Data Engineering:** Database design, ETL, Python, SQL, Impala, Sybase DB  
 - **Languages:** Spanish (Native), English (B2), German (A1)
