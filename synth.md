@@ -1,3 +1,9 @@
+---
+layout: page
+title: Synth
+permalink: /synth/
+---
+
 ## ***Modular analog synthesizer upgrade and user configuration memory module design*** (Undergrad project)
 
 <p align="center">
