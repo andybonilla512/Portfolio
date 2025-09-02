@@ -16,7 +16,7 @@ I am an Electronics Engineer with solid experience in programming microcontrolle
 
 ## 🎓 Education
 
-**Electronics Engineering** (Graduate-2024)  
+**Electronics Engineering** (Graduate-2025)  
 Universidad del Valle de Guatemala (Guatemala)
 
 ---
