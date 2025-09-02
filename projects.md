@@ -11,7 +11,7 @@ permalink: /projects/
 </p>
 
 
-📄 [Synth](synth/)
+📄 [Synth](synth.md)
 
 
 ### Power Supply
