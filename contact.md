@@ -4,4 +4,6 @@ title: Contact
 permalink: /contact/
 ---
 
-Puedes escribirme a andy@ejemplo.com
+[LinkedIn Profile](https://www.linkedin.com/in/andybonilla0512/)
+[Email](andy.bonilla512@gmail.com)
+Puedes escribirme a andy.bonilla512@gmail.com
