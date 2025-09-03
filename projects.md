@@ -13,7 +13,3 @@ permalink: /projects/
 </p>
 
 ---
-
-[]:## ***Router Battery Backup System*** (Work-from-home for personal use)
-
-[]:🪫 [Battery Backup System](ups.md)
