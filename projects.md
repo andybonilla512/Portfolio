@@ -14,6 +14,6 @@ permalink: /projects/
 
 ---
 
-%## ***Router Battery Backup System*** (Work-from-home for personal use)
+[]:## ***Router Battery Backup System*** (Work-from-home for personal use)
 
-%🪫 [Battery Backup System](ups.md)
+[]:🪫 [Battery Backup System](ups.md)
