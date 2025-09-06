@@ -13,3 +13,5 @@ permalink: /projects/
 </p>
 
 ---
+## ***Mini Scada System (course project)***
+🖥️[Scada](scada.md)
