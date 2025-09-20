@@ -17,7 +17,7 @@ permalink: /projects/
 🖥️[Scada](scada.md)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/37c34bf4-e321-479d-a2d6-c3ff5b537a3c" alt="Synth" width="300" />
+  <img src="https://github.com/user-attachments/assets/37c34bf4-e321-479d-a2d6-c3ff5b537a3c" alt="Synth" width="500" />
   
 </p>
 
