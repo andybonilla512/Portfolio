@@ -66,15 +66,37 @@ Subsequently, based on the proposed schematic, the printed circuit board (PCB) w
 
 
 ### Voltage Controlled Filter (VCF) with Integrated Memory
+For the development of this last module, called Configuration Memory, we considered the growing trend in modern electronics of allowing users to set and personalize specific parameters that can be stored for later retrieval and reuse. Such functionality is particularly valuable in complex systems like synthesizers, where saving user configurations enhances sound replication and improves the overall user experience. Therefore, this module was designed to capture, store, and recover these parameters, aligning with current technological advances.
+
+To better illustrate the structure and operation of this module, we based its implementation on the architecture shown in Figure \ref{fig:05_pid_digital}. A microcontroller was used to read the position of a potentiometer, store the value, and ensure its retrieval when required. Integrated into the system’s operation, the module allows for the following functionalities:
+
+- **User configuration insertion (Save):** As shown in Figure below, the block diagram represents the user’s interaction with the module. The user can adjust the resonance potentiometer to a desired position and, by pressing the Save button, the value is read by an analog-to-digital converter (ADC) and stored in EEPROM memory.
+
+<img width="852" height="231" alt="13_mem_diagrama_bloques_inicial" src="https://github.com/user-attachments/assets/e60ac830-0890-40b4-92a0-4cc9c69c39c8" />
 
 
+- **Previous configuration retrieval (Replicate):** Similarly, as shown in Figure below, the block diagram represents how, by pressing the Replicate button, the value previously stored in EEPROM is retrieved and used as a reference within a PI controller, enabling the system to return to the desired value.
+
+<img width="851" height="261" alt="13_mem_diagrama_bloques_reload" src="https://github.com/user-attachments/assets/2105e6a4-5a60-40a8-b7e1-7f397c6ea89a" />
+
+The following shows both the analog circuit and the digital control used for the implementation of this module:
+
+- **Voltage Controlled Filter (VCF):**
+
+This module, called Output with Panning, was based on the design proposed by Erica Synths and Moritz Klein [Erica Synth VCF](https://www.ericasynths.lv/media/VCF_MANUAL_v2.pdf)
+The circuit was simulated using the LTspice tool to verify its operation as well.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fd553d19-34e5-4a48-8755-82ebc4979e11" alt="Synth" width="500" />
 </p>
 
+- **PID Control:**
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0cc6a834-b2ec-469e-a159-e4cd884d90e8" alt="Synth" width="500" />
 </p>
+
+
+- **Modulo Layout**
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ab704ddb-1940-4274-98cb-388916ad38b3" alt="Synth" width="300" />
