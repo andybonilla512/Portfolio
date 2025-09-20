@@ -274,7 +274,7 @@ Based on the mentioned work flow, we developed the following working code in C++
 
 
 - **Modulo Layout**
-
+Based on the proposed system mentioned above, the printed circuit board (PCB) was designed and routed using EasyEDA software, presenting the system’s 2D layout.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ab704ddb-1940-4274-98cb-388916ad38b3" alt="Synth" width="300" />
 </p>
