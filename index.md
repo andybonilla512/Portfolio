@@ -11,7 +11,7 @@ permalink: /
 <h1 align="center">👋 Hello! I'm Andy Bonilla</h1>
 
 <p align="center">
-Electronics Engineer | Hardware Developer | Data Engineer  
+Electronics Engineer | Embedded Engineer | Data Engineer  
 </p>
 
 ---
