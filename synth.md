@@ -6,7 +6,7 @@ We followed the recommendation from a previous author, which highlights the impo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2ac99310-5fc8-402a-952a-7a32945d61c1" alt="Synth" width="500" />
 </p>
-
+Subsequently, based on the proposed schematic, the printed circuit board (PCB) was designed and routed using EasyEDA software, presenting the system’s 2D layout.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/829a4705-3591-4da2-b76d-9d26a09369cc" alt="Synth" width="300" />
 </p>
@@ -18,7 +18,7 @@ The circuit was simulated using the LTspice tool to verify its operation.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/913baebb-36be-4a83-bad1-70512c72e95e" alt="Synth" width="500" />
 </p>
-
+Subsequently, based on the proposed schematic, the printed circuit board (PCB) was designed and routed using EasyEDA software, presenting the system’s 2D layout.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d3a6c348-c768-48ca-b730-f509a99138d0" alt="Synth" width="300" />
 </p>
@@ -32,7 +32,7 @@ The circuit was simulated using the LTspice tool to verify its operation as well
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ae40cb39-95d8-4546-bd78-78b674e4d62b" alt="Synth" width="500" />
 </p>
-
+Subsequently, based on the proposed schematic, the printed circuit board (PCB) was designed and routed using EasyEDA software, presenting the system’s 2D layout.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/00d22b44-132d-49b8-9e71-625e5a2cc9f2" alt="Synth" width="300" />
 </p>
@@ -45,7 +45,7 @@ The circuit was simulated using the LTspice tool to verify its operation as well
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c2e10b3b-fb5a-44e0-b135-072f4e01556f" alt="Synth" width="500" />
 </p>
-
+Subsequently, based on the proposed schematic, the printed circuit board (PCB) was designed and routed using EasyEDA software, presenting the system’s 2D layout.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/cd243bb3-ba1c-4ae6-b09f-f66b2341e459" alt="Synth" width="300" />
 </p>
@@ -58,7 +58,7 @@ The circuit was simulated using the LTspice tool to verify its operation as well
 <p align="center">
   <img src="https://github.com/user-attachments/assets/98a9e10a-d612-4dd9-8a00-2bbfe728c083" alt="Synth" width="500" />
 </p>
-
+Subsequently, based on the proposed schematic, the printed circuit board (PCB) was designed and routed using EasyEDA software, presenting the system’s 2D layout.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/50364e3d-7e0f-438c-85e7-d7ff88f353a4" alt="Synth" width="300" />
 </p>
