@@ -2,6 +2,7 @@
 # ¡Hola!
 
 ### Power Supply
+We followed the recommendation from a previous author, which highlights the importance of suppressing electrical noise in the system’s power source. For this purpose, a hybrid power supply was developed to mitigate the 60 Hz noise from Guatemala’s electrical grid. This was achieved using two Buck converters based on the LM2596S chip. Although these modules switch at 150 kHz and therefore still generate electrical noise, it is shifted outside the audible range for users. The design includes a transformation and rectification stage, similar to linear supplies, followed by the two DC-DC converters.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2ac99310-5fc8-402a-952a-7a32945d61c1" alt="Synth" width="500" />
