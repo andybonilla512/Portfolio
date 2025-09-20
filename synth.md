@@ -12,8 +12,8 @@ We followed the recommendation from a previous author, which highlights the impo
 </p>
 
 ### Voltage Controlled Oscillator (VCO)
-
-[Erica Synth][https://www.ericasynths.lv/media/VCO_MANUAL_v2.pdf]
+This module, called Voltage-Controlled Oscillator (VCO), was based on the design proposed by Erica Synths and Moritz Klein [Erica Synth VCO](https://www.ericasynths.lv/media/VCO_MANUAL_v2.pdf)
+The circuit was simulated using the LTspice tool to verify its operation.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/913baebb-36be-4a83-bad1-70512c72e95e" alt="Synth" width="500" />
@@ -25,6 +25,9 @@ We followed the recommendation from a previous author, which highlights the impo
 
 ### Voltage Controlled Oscillator (VCA)
 
+This module, called Voltage-Controlled Amplifier (VCA), was based on the design proposed by Erica Synths and Moritz Klein [Erica Synth VCA](https://www.ericasynths.lv/media/VCA_MANUAL_FINAL.pdf)
+The circuit was simulated using the LTspice tool to verify its operation as well.
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ae40cb39-95d8-4546-bd78-78b674e4d62b" alt="Synth" width="500" />
@@ -35,6 +38,8 @@ We followed the recommendation from a previous author, which highlights the impo
 </p>
 
 ### Envelope Generator (EG)
+This module, called Envelope Generator (EG), was based on the design proposed by Erica Synths and Moritz Klein [Erica Synth EG]([https://www.ericasynths.lv/media/VCA_MANUAL_FINAL.pdf](https://www.ericasynths.lv/media/EG_MANUAL_v3.pdf))
+The circuit was simulated using the LTspice tool to verify its operation as well.
 
 
 <p align="center">
@@ -46,6 +51,9 @@ We followed the recommendation from a previous author, which highlights the impo
 </p>
 
 ### Mixer 
+
+This module, called Output with Panning, was based on the design proposed by Erica Synths and Moritz Klein [Erica Synth Output](https://www.ericasynths.lv/media/DIY_EDU_Output_Manual.pdf)
+The circuit was simulated using the LTspice tool to verify its operation as well.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/98a9e10a-d612-4dd9-8a00-2bbfe728c083" alt="Synth" width="500" />
