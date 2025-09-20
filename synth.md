@@ -151,7 +151,7 @@ Based on the mentioned work flow, we developed the following working code in C++
     float dacOutput = 0.0;
     // PID constants
     float kP = 3.0;
-    float kI = 0.0;
+    float kI = 0.01;
     float kD = 0.0;
     // Time variables
     unsigned long lastTime = 0;
