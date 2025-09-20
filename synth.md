@@ -90,6 +90,15 @@ The circuit was simulated using the LTspice tool to verify its operation as well
 </p>
 
 - **PID Control:**
+On the other hand, to store and retrieve user configurations it was necessary to implement a digital PID controller, based on the architecture shown in the two block diagrams showed above. Since the system’s plant consists of a DC motor coupled to a potentiometer for position feedback, a signal conditioning stage was required. The circuit shown in Figure below ensures that the system maintains the appropriate linearity so that the PID controller operates properly under LTI system principles. For this purpose, the DAC output signal—ranging from 0 V to 5 V—is converted into a signal between –5 V and 5 V, allowing control over the motor’s rotation direction. The details of this topology are explained below.
+
+    - Voltage divider and impedance matching: A voltage divider with a factor of 0.5 is used to obtain a 2.5 V reference, followed by an operational amplifier in voltage follower configuration, providing low output impedance for the next stage.
+
+    - Differential amplifier: The purpose of this stage is to use the reference from the previous step and compare it with the DAC output range of [0 V, 5 V]. By amplifying only the difference between them, the motor can operate within a range of [–5 V, 5 V], allowing it to rotate in either direction.
+
+    - Push-pull stage with feedback: Once the motor’s expected operating voltage range is established, a power stage is implemented to amplify the control signal’s current that drives the motor. This stage uses TIP41C and TIP42C transistors along with protection diodes.
+
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0cc6a834-b2ec-469e-a159-e4cd884d90e8" alt="Synth" width="500" />
