@@ -7,9 +7,9 @@
 /*
  =======================================================================
  Name        : Historiador.c
- Author      : Andy Bonilla (19451) y Jose Trujillo (19452)
+ Author      : Andy Bonilla (19451)
  Version     :
- Copyright   : Electronica Digital 3
+ Copyright   : Digital Electronics 3: Introduction to Embedded Systems
  Description : 
  * 
  =======================================================================
@@ -344,7 +344,7 @@ This C program, designed for Raspberry Pi, implements a multithreaded sampling a
  =======================================================================
  Name        : Muestreo.c
  Author      : Andy Bonilla (19451) 
- Copyright   : Electronica Digital 3
+ Copyright   : Digital Electronics 3: Introduction to Embedded Systems
  Description : 
  * 
  =======================================================================
