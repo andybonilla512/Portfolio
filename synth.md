@@ -1,5 +1,4 @@
 ---
-# ¡Hola!
 
 ### Power Supply
 We followed the recommendation from a previous author, which highlights the importance of suppressing electrical noise in the system’s power source. For this purpose, a hybrid power supply was developed to mitigate the 60 Hz noise from Guatemala’s electrical grid. This was achieved using two Buck converters based on the LM2596S chip. Although these modules switch at 150 kHz and therefore still generate electrical noise, it is shifted outside the audible range for users. The design includes a transformation and rectification stage, similar to linear supplies, followed by the two DC-DC converters.
@@ -14,6 +13,7 @@ We followed the recommendation from a previous author, which highlights the impo
 
 ### Voltage Controlled Oscillator (VCO)
 
+[Erica Synth][https://www.ericasynths.lv/media/VCO_MANUAL_v2.pdf]
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/913baebb-36be-4a83-bad1-70512c72e95e" alt="Synth" width="500" />
