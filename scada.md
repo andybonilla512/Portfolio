@@ -336,97 +336,97 @@ char* copyString(char s[])
 ```
 
 
-## UTR
+## RTU (Remote Terminal Unit)
+This C program, designed for Raspberry Pi, implements a multithreaded sampling and communication system. It integrates an SPI-connected ADC (MCP3002) for analog-to-digital conversion, digital input/output controls for switches, buttons, and LEDs, and uses UDP sockets for network communication. The system captures ADC readings, processes voltage values, and detects out-of-range conditions to trigger events. It also handles user interactions through interrupts (switches and buttons), synchronizes access with semaphores, and logs events with timestamps. Multiple threads are responsible for sampling the ADC, sending collected data via UDP, and receiving remote commands to control outputs (like LEDs and buzzer). Overall, the program provides a real-time framework for monitoring, event detection, and remote IoT-style communication.
 
 ```C
 /*
  =======================================================================
  Name        : Muestreo.c
- Author      : Andy Bonilla (19451) y Jose Trujillo (19452)
- Version     :
+ Author      : Andy Bonilla (19451) 
  Copyright   : Electronica Digital 3
  Description : 
  * 
  =======================================================================
 
 /* =====================================================================
- 	 Inclusion de librerias
+ 	 Library inclusion
 ===================================================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <unistd.h>
-#include <stdint.h>			//enteros como uint8_t y uint16_t
-#include <wiringPi.h>		//wiringPi para gpio
-#include <wiringPiSPI.h>	//wiringPi para conexion SPI
-#include <pthread.h>		//para multi-hilos
-#include <string.h>			//manejo de string
+#include <stdint.h>			//integers like uint8_t and uint16_t
+#include <wiringPi.h>		//wiringPi for gpio
+#include <wiringPiSPI.h>	//wiringPi for SPI connection
+#include <pthread.h>		//for multi-threading
+#include <string.h>			//string handling
 #include <sys/types.h>
-#include <sys/socket.h>		//uso de sockets
-#include <netinet/in.h>		//acceso a la red
-#include <netdb.h>			//acceso a la red
-#include <arpa/inet.h>		//acceso a la red
+#include <sys/socket.h>		//use of sockets
+#include <netinet/in.h>		//network access
+#include <netdb.h>			//network access
+#include <arpa/inet.h>		//network access
 #include <sys/time.h>
 #include <time.h>
 #include <sys/timerfd.h>
 #include <semaphore.h>
-/* =====================================================================
-	Directivas a ejecutar
+* =====================================================================
+	Directives to execute
 ===================================================================== */
-//para conexion de integrado de ADC
-#define SPI_CHANNEL	      0	// Canal SPI de la Raspberry Pi, 0 ó 1
-#define SPI_SPEED 	1500000	// Velocidad de la comunicación SPI (reloj, en HZ)
-#define ADC_CHANNEL       0	// Canal A/D del MCP3002 a usar, 0 ó 1
-//para el tamano de
-//mensajes via tcp
-#define MSG_SIZE 100		// Tamaño (máximo) del mensaje
-//para el uso de semaforo
-#define INIT_VALUE	1		// Para el valor inicial del semáforo
-//del timer
+//for ADC IC connection
+#define SPI_CHANNEL	      0	// SPI channel of Raspberry Pi, 0 or 1
+#define SPI_SPEED 	1500000	// SPI communication speed (clock, in HZ)
+#define ADC_CHANNEL       0	// A/D channel of MCP3002 to use, 0 or 1
+//for message size
+//via tcp
+#define MSG_SIZE 100		// Maximum message size
+//for semaphore use
+#define INIT_VALUE	1		// Initial value of semaphore
+//for timer
 #define milis_nanos 1000000
 /* =====================================================================
-	Prototipos de funciones
+	Function prototypes
 ===================================================================== */
-uint16_t get_ADC(int channel);			//para adc
-void funcion_adc(void *ptr);			//para muestreo con adc
-void funcion_envio(void *ptr);			//para mandar datos via udp
-void funcion_recibir(void *ptr);			//para recibir datos via udp
+uint16_t get_ADC(int channel);			//for adc
+void funcion_adc(void *ptr);			//for sampling with adc
+void funcion_envio(void *ptr);			//for sending data via udp
+void funcion_recibir(void *ptr);		//for receiving data via udp
 void funcion_eventos(int ev);
-void error(const char *msg);			//errores en comunicacion tcp
+void error(const char *msg);			//errors in tcp communication
 void espera(int tiempo);
 /* =====================================================================
-	variables globales a implementar
+	Global variables
 ===================================================================== */
-//para semaforo
+//for semaphore
 sem_t my_semaphore;
-//para antirrebores de entradas digitaes
+//for debouncing digital inputs
 int antirrebote1,antirrebote2,antirrebote3=0,antirrebote4=0;
-int inter1,inter2,bot1,bot2;	//para antirrebotes
+int inter1,inter2,bot1,bot2;	//for debouncing
 int led1,led2;
-//para mandar los mensajes
-char datos_udp[50];								//para mensajes tcp
+//for sending messages
+char datos_udp[50];								//for tcp messages
 int eventos=0;
-//para conversion de voltaje en adc
+//for ADC voltage conversion
 uint16_t ADCvalue;
 uint16_t conversion;
 float voltaje;
 uint16_t i;
-//para comunicacion via sockets
+//for socket communication
 int sockfd, n;
 unsigned int length;
 struct sockaddr_in server, from;
 struct hostent *hp;
 char buffer[MSG_SIZE];
-//obtener el tiempo
+//to get time
 static int seconds_last=99;
 char TimeString[128];
 struct timeval current_time;
 double delta,total,tiempo_inicial,tiempo_actual;
-//arreglo de eventos
+//event array
 char recopilacion[1000000][50];
 char datos_eventos[100];
 int contador=0;
-//para ver si hubo actualizacion o no
+//to check if there was update
 int overshoot=0,undershoot=0;
 int bandera;
 /* =====================================================================
@@ -434,7 +434,7 @@ int bandera;
 ===================================================================== */
 void ISR()
 {
-	//----------------------para cambio de estado de interruptor 1
+	//----------------------for switch 1 state change
 	if (digitalRead(12)==1)
 	{
 		inter1=1;
@@ -446,7 +446,7 @@ void ISR()
 		usleep(250000);
 		inter1=0;
 	}
-	//----------------------para cambio de estado de interruptor 2
+	//----------------------for switch 2 state change
 	if (digitalRead(16)==1 )
 	{
 		inter2=1;
@@ -458,22 +458,21 @@ void ISR()
 		usleep(250000);
 		inter2=0;
 	}
-	//----------------------para cambio de estado boton 1
+	//----------------------for button 1 state change
 	if (digitalRead(20)==0 )
 	{
 		bot1=1;
 		usleep(250000);
 		funcion_eventos(3);
 	}
-	
-	//----------------------para cambio de estado boton 2
+	//----------------------for button 2 state change
 	if (digitalRead(18)==0 )
 	{
 		bot2=1;
 		usleep(250000);
 		funcion_eventos(4);
 	}
-	//----------------------para evento IoT 1
+	//----------------------for IoT event 1
 	if (digitalRead(22)==1 )
 	{
 		led1=1;
@@ -487,7 +486,7 @@ void ISR()
 		digitalWrite(23,0);
 		led1=0;
 	}
-	//----------------------para evento IoT 2
+	//----------------------for IoT event 2
 	if (digitalRead(27)==1 )
 	{
 		led2=1;
@@ -508,67 +507,66 @@ void ISR()
 ===================================================================== */
 int main(int argc, char *argv[])
 {
-    //----------------------recepcion de argumentos de entrada
+   //----------------------input arguments reception
     if(argc != 3)	
     {
 		fprintf(stderr,"ERROR, Uso correcto: %s IP_servidor num_puerto\n", argv[0]);
 		exit(0);
     }
-    //----------------------creacion de socket
+    //----------------------socket creation
     sockfd = socket(AF_INET, SOCK_DGRAM, 0); 
 	if(sockfd < 0)
 		error("socket");
-	//----------------------jala la ip del server
+	//----------------------server ip fetching
 	server.sin_family = AF_INET;	
 	hp = gethostbyname(argv[1]);	
 	if(hp == 0)
 		error("Unknown host");
-    //----------------------creacion de puerto y direcciones
+    //----------------------port and address creation
     memcpy((char *)&server.sin_addr, (char *)hp->h_addr, hp->h_length);
 	server.sin_port = htons(atoi(argv[2]));	
 	length = sizeof(struct sockaddr_in);	
-	//----------------------configuracion de pines
+	//---------------------- pin configuration
 	wiringPiSetupGpio();
-	pinMode(12,INPUT);						//modo interruptor 1
-	pinMode(16,INPUT);						//modo interruptor 2
-	pinMode(20,INPUT);						//modo boton 1
-	pinMode(18,INPUT);						//modo boton 2
-	pinMode(23,OUTPUT);						//modo led1
-	pinMode(24,OUTPUT);						//modo led2
-	pinMode(25,OUTPUT);						//modo buzzer
-	pinMode(22,OUTPUT);						//modo IoT1
-	pinMode(27,OUTPUT);						//modo IoT2
-	pullUpDnControl(12,PUD_UP);				//pull up interruptor 1
-	pullUpDnControl(16,PUD_UP);				//pull up interruptor 2
-	pullUpDnControl(20,PUD_UP);				//pull up boton 1
-	pullUpDnControl(18,PUD_UP);				//pull up boton 2
-	pullUpDnControl(22,PUD_UP);				//pull up IOT 1
-	pullUpDnControl(27,PUD_UP);				//pull up IOT 2
-	wiringPiISR(12, INT_EDGE_BOTH,ISR);	//interrupcion interruptor 1
-	wiringPiISR(16, INT_EDGE_BOTH,ISR);	//interrupcion interruptor 2
-	wiringPiISR(20, INT_EDGE_RISING,ISR);	//interrupcion boton 1
-	wiringPiISR(18, INT_EDGE_RISING,ISR);	//interrupcion boton 2
-	wiringPiISR(22, INT_EDGE_BOTH,ISR);	//interrupcion IoT 1
-	wiringPiISR(27, INT_EDGE_BOTH,ISR);	//interrupcion IoT 2
-	//----------------------iniciar funcion tiempo
+	pinMode(12,INPUT);						// mode switch 1
+	pinMode(16,INPUT);						// mode switch 2
+	pinMode(20,INPUT);						// mode button 1
+	pinMode(18,INPUT);						// mode button 2
+	pinMode(23,OUTPUT);						// mode led1
+	pinMode(24,OUTPUT);						// mode led2
+	pinMode(25,OUTPUT);						// mode buzzer
+	pinMode(22,OUTPUT);						// mode IoT1
+	pinMode(27,OUTPUT);						// mode IoT2
+	pullUpDnControl(12,PUD_UP);				// pull up switch 1
+	pullUpDnControl(16,PUD_UP);				// pull up switch 2
+	pullUpDnControl(20,PUD_UP);				// pull up button 1
+	pullUpDnControl(18,PUD_UP);				// pull up button 2
+	pullUpDnControl(22,PUD_UP);				// pull up IOT 1
+	pullUpDnControl(27,PUD_UP);				// pull up IOT 2
+	wiringPiISR(12, INT_EDGE_BOTH,ISR);	// interrupt switch 1
+	wiringPiISR(16, INT_EDGE_BOTH,ISR);	// interrupt switch 2
+	wiringPiISR(20, INT_EDGE_RISING,ISR);	// interrupt button 1
+	wiringPiISR(18, INT_EDGE_RISING,ISR);	// interrupt button 2
+	wiringPiISR(22, INT_EDGE_BOTH,ISR);	// interrupt IoT 1
+	wiringPiISR(27, INT_EDGE_BOTH,ISR);	// interrupt IoT 2
+	//----------------------start time function
 	gettimeofday(&current_time,NULL);
 	tiempo_inicial=current_time.tv_sec + current_time.tv_usec/1000000.0;
-	//----------------------configuracion de ADC
+	//----------------------ADC configuration
 	if(wiringPiSPISetup(SPI_CHANNEL, SPI_SPEED) < 0)
 	{
 		printf("wiringPiSPISetup falló.\n");
 		return(-1);
 	}
-	//----------------------inicializacion de semaforo
+	//----------------------semaphore init
 	sem_init(&my_semaphore, 0, INIT_VALUE);
-	//----------------------inicializacion de variables para hilos
+	//----------------------thread variables init 
 	pthread_t var_adc,var_switch,var_envio,var_recibir;	
-	//----------------------inicializacion de hilos
-	//funcion_eventos(0);
+	//----------------------thread init
 	pthread_create(&var_adc, NULL, (void*)&funcion_adc, NULL);
 	pthread_create(&var_envio, NULL, (void*)&funcion_envio, NULL);
 	pthread_create(&var_recibir, NULL, (void*)&funcion_recibir, NULL);
-	//----------------------pedazo para unir los hilos
+	//----------------------join threads
 	pthread_join(var_adc,NULL);
 	pthread_join(var_envio,NULL);
 	pthread_join(var_recibir,NULL);
@@ -577,11 +575,10 @@ int main(int argc, char *argv[])
 	exit(0);
 }
 /* =====================================================================
-	Funciones para hilos
+	Functions for threads
 ===================================================================== */
-
 /* ==========
-	Funcion para jalar valores ADC
+	Get ADC values
 =============*/
 uint16_t get_ADC(int ADC_chan)
 {
@@ -600,7 +597,7 @@ uint16_t get_ADC(int ADC_chan)
 	return(resultado);
 }
 /* ==========
-	Funcion para muestreo de ADC
+	ADC sampling
 =============*/
 void funcion_adc(void *ptr)
 {
@@ -653,7 +650,7 @@ void funcion_adc(void *ptr)
 }
 
 /* ==========
-	Funcion para hilo de envio 
+	Sending thread data  
 =============*/
 void funcion_envio(void *ptr)
 {
@@ -684,7 +681,7 @@ void funcion_envio(void *ptr)
 }
 
 /* ==========
-	Funcion para hilo de comunicacion
+	Receiving thread data  
 =============*/
 void funcion_recibir(void *ptr)
 {
@@ -736,7 +733,7 @@ void funcion_recibir(void *ptr)
 }
 
 /* ==========
-	Funcion para hilo de eventos
+	Events thread
 =============*/
 void funcion_eventos(int ev)
 {
@@ -755,7 +752,7 @@ void funcion_eventos(int ev)
 	contador++;		
 }
 /* ==========
-	Funcion para error en comunicacion
+	Comms error
 =============*/
 void error(const char *msg)
 {
@@ -763,7 +760,7 @@ void error(const char *msg)
     exit(0);
 }
 /* ==========
-	Funcion para tiempo de espera
+	Wait time
 =============*/
 void espera(int tiempo)
 {
@@ -780,5 +777,6 @@ void espera(int tiempo)
 		exit(1);
 	}
 }
+
 
 ```
