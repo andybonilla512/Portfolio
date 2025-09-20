@@ -10,7 +10,7 @@ permalink: /about/
 
 ## 👤 About Me
 
-I am an Electronics Engineer with solid experience in programming microcontrollers, microprocessors, and programmable logic controllers (PLCs). I have worked in the design and manufacturing of printed circuit boards (PCBs) and power circuit design. Additionally, I have extensive experience in data engineering, including database design, creation and maintenance of ETL processes for large-scale datasets. I am also eager to keep learning and exploring new technologies as I grow in my career.
+I am an Electronics Engineer with solid experience in programming microcontrollers, microprocessors, and programmable logic controllers (PLCs). I have worked in the design and manufacturing of printed circuit boards (PCBs), and power circuit & control systems design. Additionally, I have extensive experience in data engineering, including database design, creation and maintenance of ETL processes for large-scale datasets. I am also eager to keep learning and exploring new technologies as I grow in my career.
 
 ---
 
