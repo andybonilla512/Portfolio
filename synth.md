@@ -102,28 +102,28 @@ Based on the mentioned work flow, we developed the following working code in C++
 
 ```C
  /*--------------------------------------------------------------------
-    ACTUALIZACION DE SINTETIZADOR ANALOGICO MODULAR Y DISENO DE MODULO PARA 
-    MEMORIA DE CONFIGURACIONES DE USUARIO
+    UPDATE OF MODULAR ANALOG SYNTHESIZER AND MODULE DESIGN FOR 
+    USER CONFIGURATION MEMORY
     ---------------------------------------------------------------------
-    INGENIERIA ELECTRONICA
+    ELECTRONICS ENGINEERING
     ---------------------------------------------------------------------
-    Programa que se encarga de ejecutar el sistema de memoria de 
-    configuraciones del usuario, a travEs de un PID digital
+    Program responsible for executing the user configuration memory 
+    system, through a digital PID
     ---------------------------------------------------------------------
     Andy Bonilla (19451)
     -------------------------------------------------------------------*/
     
     /*-------------------------------------------------------------------
-    ------------------------- IMPORTACION DE LIBRERIAS
+    ------------------------- LIBRARY IMPORTS
     -------------------------------------------------------------------*/
     #include <Wire.h>
     #include <Adafruit_MCP4725.h>
     #include <EEPROM.h>  
     Adafruit_MCP4725 dac;
     /*-------------------------------------------------------------------
-    ------------------------- DIRECTIVAS DE COMPILADOR
+    ------------------------- COMPILER DIRECTIVES
     -------------------------------------------------------------------*/
-    #define DELTA 0.01            //equivalente a 100Hz0
+    #define DELTA 0.01            // equivalent to 100Hz
     #define MAX_BITS_DAC 4095.0
     #define MAX_BITS_ADC 1023.0
     #define COTA_INFERIOR_CONTROL -5.0
@@ -137,9 +137,9 @@ Based on the mentioned work flow, we developed the following working code in C++
     #define PIN_REPLICAR 3
     #define EEPROM_ADDRESS 0
     /*-------------------------------------------------------------------
-    ------------------------- DECLARACION DE VARIABLES
+    ------------------------- VARIABLE DECLARATION
     -------------------------------------------------------------------*/
-    // Variables del PID
+    // PID variables
     float y_k = 0.0;        
     float r_k = 2.5;        
     float e_k = 0.0;        
@@ -149,25 +149,25 @@ Based on the mentioned work flow, we developed the following working code in C++
     float E_k_1 = 0.0;      
     float u_k = 0.0;        
     float dacOutput = 0.0;
-    // Constantes del PID
+    // PID constants
     float kP = 3.0;
     float kI = 0.0;
     float kD = 0.0;
-    // Variables de tiempo
+    // Time variables
     unsigned long lastTime = 0;
     float delta_t = 0.0; 
-    //antirrebotes para botones
-    byte antirrebote1, antirrebote2; //antirrebotes
-    //variable para modo
+    // Debounce for buttons
+    byte antirrebote1, antirrebote2; // debouncing
+    // Variable for mode
     int modo = 0;
     /*-------------------------------------------------------------------
-    ------------------------- INTERRUPCIONES POR BOTONAZOS
+    ------------------------- BUTTON INTERRUPTIONS
     -------------------------------------------------------------------*/
-    //boton de guardar
+    // Save button
     void ISR_n1(){
       antirrebote1=1;
     }
-    //boton de replicar
+    // Replicate button
     void ISR_n2(){
       antirrebote2=1;
     }
@@ -184,87 +184,88 @@ Based on the mentioned work flow, we developed the following working code in C++
     }
     
     /*-------------
-    ------- FUNCION AUXILIAR DE MAPEO DE SALIDA
+    ------- AUXILIARY FUNCTION FOR OUTPUT MAPPING
     -------------*/
-    // Ecuacion de la recta: y = 0.5 * x + 2.5 -> mapeo de [-5,5] a [0,4095]
+    // Line equation: y = 0.5 * x + 2.5 -> mapping from [-5,5] to [0,4095]
     float mapVoltageToDAC(float voltage) 
     {
       float dacValue = PENDIENTE * voltage + INTERCEPTO;
       return (dacValue * MAX_BITS_DAC) / V_NOMINAL;
     }
     /*-------------
-    ------- FUNCION AUXILIAR PARA GESTIONAR BOTONAZOS
+    ------- AUXILIARY FUNCTION FOR BUTTON HANDLING
     -------------*/
     void gestion_botones(void){
-      // Antirrebote para guardar configuracion
+      // Debounce for saving configuration
       if (digitalRead(PIN_GUARDAR) == 0 && antirrebote1 == 1){   
         int pote = analogRead(A0);  
         float voltaje_pote = (pote / MAX_BITS_ADC) * V_NOMINAL;
-        //guardar referencia en eeprom
+        // Save reference in EEPROM
         EEPROM.put(0, voltaje_pote); 
         antirrebote1 = 0;
       }
-      // Antirrebote para replicar configuracion
+      // Debounce for replicating configuration
       if (digitalRead(PIN_REPLICAR) == 0 && antirrebote2 == 1){   
         float storedVoltage;
         EEPROM.get(0, storedVoltage);  
-        //asignacion de nueva referencia
+        // Assign new reference
         r_k = storedVoltage;
         modo = 2;  
         antirrebote2 = 0;
       }
     }
     /*-------------
-    ------- FUNCION AUXILIAR PARA EJECUCION DE PID
+    ------- AUXILIARY FUNCTION FOR PID EXECUTION
     -------------*/
     void ejecucion_pid(void)
     {
-      //pseudo muestreo
+      // Pseudo sampling
       unsigned long currentTime = millis();
-      delta_t = (currentTime - lastTime) / 1000.0;  // Convertir a segundos
+      delta_t = (currentTime - lastTime) / 1000.0;  // Convert to seconds
       if (delta_t >= DELTA) 
       {
         lastTime = currentTime; 
-        // Lectura del potenciometro (salida medida)
+        // Potentiometer reading (measured output)
         y_k = (analogRead(A0) * V_NOMINAL) / MAX_BITS_ADC;
-        // Calculo del error
+        // Error calculation
         e_k = r_k - y_k;
-        // Derivada del error
+        // Error derivative
         eD = (e_k - e_k_1) / delta_t;
-        // Integral del error
+        // Error integral
         Ek = (E_k_1 + e_k) * delta_t;
-        // Ecuacion de diferencias del controlador PID
+        // PID controller difference equation
         u_k = kP * e_k + (kI * Ek) + (kD * eD);
-        // Limitar la salida [-5V, 5V]
+        // Limit output [-5V, 5V]
         if (u_k > COTA_SUPERIOR_CONTROL) {
           u_k = COTA_SUPERIOR_CONTROL;
         } else if (u_k < COTA_INFERIOR_CONTROL) {
           u_k = COTA_INFERIOR_CONTROL;
         }
-        // Actualizacion de derivativo e integral anterior
+        // Update derivative and integral history
         e_k_1 = e_k;
         E_k_1 = Ek;
-        // Convertir la salida de [-5V, 5V] a [0V, 5V] para el DAC
+        // Convert output from [-5V, 5V] to [0V, 5V] for the DAC
         dacOutput = mapVoltageToDAC(u_k);
-        // Enviar hacia DAC
+        // Send to DAC
         dac.setVoltage((int)dacOutput, false); 
-        // Verificar si el error esta dentro del rango permitido
+        // Check if error is within allowed range
         if (e_k >= -0.05 && e_k <= 0.05) {
-          //Serial.println("Error dentro del rango, PID desactivado.");
-          modo = 0;  // Detener el PID si el error es muy pequeno
+          //Serial.println("Error within range, PID deactivated.");
+          modo = 0;  // Stop PID if error is very small
         }
       }
     }
     /*-------------------------------------------------------------------
-    ------------------------- LOOP PRINCIPAL
+    ------------------------- MAIN LOOP
     -------------------------------------------------------------------*/
     void loop() {
       gestion_botones();
-      // Ejecutar PID solo cuando se presione el boton de replicar
+      // Execute PID only when the replicate button is pressed
       if (modo == 2) {
         ejecucion_pid();
       }
     }
+
 ```
 
 <p align="center">
