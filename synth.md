@@ -1,11 +1,14 @@
 [Demonstration](https://youtu.be/ZgxhJE8VZXs?si=FFQu2eCE-Eo7Yek6)
 
-<iframe width="560" height="315" 
-  src="https://youtu.be/ZgxhJE8VZXs?si=FFQu2eCE-Eo7Yek6" 
-  title="YouTube video player" frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-  allowfullscreen>
-</iframe>
+
+<p align="center">
+  <a href="https://youtu.be/ZgxhJE8VZXs?si=FFQu2eCE-Eo7Yek6" target="_blank">
+    <img src="https://youtu.be/ZgxhJE8VZXs?si=FFQu2eCE-Eo7Yek6/hqdefault.jpg" 
+         alt="Open in YouTube"
+         style="width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+  </a>
+</p>
+
 
 
 
