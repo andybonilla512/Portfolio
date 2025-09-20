@@ -98,7 +98,174 @@ On the other hand, to store and retrieve user configurations it was necessary to
 
     - Push-pull stage with feedback: Once the motor’s expected operating voltage range is established, a power stage is implemented to amplify the control signal’s current that drives the motor. This stage uses TIP41C and TIP42C transistors along with protection diodes.
 
+Based on the mentioned work flow, we developed the following working code in C++:
 
+```C
+ /*--------------------------------------------------------------------
+    ACTUALIZACION DE SINTETIZADOR ANALOGICO MODULAR Y DISENO DE MODULO PARA 
+    MEMORIA DE CONFIGURACIONES DE USUARIO
+    ---------------------------------------------------------------------
+    INGENIERIA ELECTRONICA
+    ---------------------------------------------------------------------
+    Programa que se encarga de ejecutar el sistema de memoria de 
+    configuraciones del usuario, a travEs de un PID digital
+    ---------------------------------------------------------------------
+    Andy Bonilla (19451)
+    -------------------------------------------------------------------*/
+    
+    /*-------------------------------------------------------------------
+    ------------------------- IMPORTACION DE LIBRERIAS
+    -------------------------------------------------------------------*/
+    #include <Wire.h>
+    #include <Adafruit_MCP4725.h>
+    #include <EEPROM.h>  
+    Adafruit_MCP4725 dac;
+    /*-------------------------------------------------------------------
+    ------------------------- DIRECTIVAS DE COMPILADOR
+    -------------------------------------------------------------------*/
+    #define DELTA 0.01            //equivalente a 100Hz0
+    #define MAX_BITS_DAC 4095.0
+    #define MAX_BITS_ADC 1023.0
+    #define COTA_INFERIOR_CONTROL -5.0
+    #define COTA_SUPERIOR_CONTROL 5.0
+    #define COTA_INFERIOR_DAC 0
+    #define COTA_SUPERIOR_DAC 4095
+    #define PENDIENTE 0.5
+    #define INTERCEPTO 2.5
+    #define V_NOMINAL 5
+    #define PIN_GUARDAR 2
+    #define PIN_REPLICAR 3
+    #define EEPROM_ADDRESS 0
+    /*-------------------------------------------------------------------
+    ------------------------- DECLARACION DE VARIABLES
+    -------------------------------------------------------------------*/
+    // Variables del PID
+    float y_k = 0.0;        
+    float r_k = 2.5;        
+    float e_k = 0.0;        
+    float e_k_1 = 0.0;      
+    float eD = 0.0;         
+    float Ek = 0.0;         
+    float E_k_1 = 0.0;      
+    float u_k = 0.0;        
+    float dacOutput = 0.0;
+    // Constantes del PID
+    float kP = 3.0;
+    float kI = 0.0;
+    float kD = 0.0;
+    // Variables de tiempo
+    unsigned long lastTime = 0;
+    float delta_t = 0.0; 
+    //antirrebotes para botones
+    byte antirrebote1, antirrebote2; //antirrebotes
+    //variable para modo
+    int modo = 0;
+    /*-------------------------------------------------------------------
+    ------------------------- INTERRUPCIONES POR BOTONAZOS
+    -------------------------------------------------------------------*/
+    //boton de guardar
+    void ISR_n1(){
+      antirrebote1=1;
+    }
+    //boton de replicar
+    void ISR_n2(){
+      antirrebote2=1;
+    }
+    /*-------------------------------------------------------------------
+    ------------------------- SET UP
+    -------------------------------------------------------------------*/
+    void setup() {
+      dac.begin(0x60);
+      lastTime = millis(); 
+      pinMode(PIN_GUARDAR, INPUT_PULLUP);        
+      pinMode(PIN_REPLICAR, INPUT_PULLUP);        
+      attachInterrupt(digitalPinToInterrupt(PIN_GUARDAR), ISR_n1, FALLING);     
+      attachInterrupt(digitalPinToInterrupt(PIN_REPLICAR), ISR_n2, FALLING);     
+    }
+    
+    /*-------------
+    ------- FUNCION AUXILIAR DE MAPEO DE SALIDA
+    -------------*/
+    // Ecuacion de la recta: y = 0.5 * x + 2.5 -> mapeo de [-5,5] a [0,4095]
+    float mapVoltageToDAC(float voltage) 
+    {
+      float dacValue = PENDIENTE * voltage + INTERCEPTO;
+      return (dacValue * MAX_BITS_DAC) / V_NOMINAL;
+    }
+    /*-------------
+    ------- FUNCION AUXILIAR PARA GESTIONAR BOTONAZOS
+    -------------*/
+    void gestion_botones(void){
+      // Antirrebote para guardar configuracion
+      if (digitalRead(PIN_GUARDAR) == 0 && antirrebote1 == 1){   
+        int pote = analogRead(A0);  
+        float voltaje_pote = (pote / MAX_BITS_ADC) * V_NOMINAL;
+        //guardar referencia en eeprom
+        EEPROM.put(0, voltaje_pote); 
+        antirrebote1 = 0;
+      }
+      // Antirrebote para replicar configuracion
+      if (digitalRead(PIN_REPLICAR) == 0 && antirrebote2 == 1){   
+        float storedVoltage;
+        EEPROM.get(0, storedVoltage);  
+        //asignacion de nueva referencia
+        r_k = storedVoltage;
+        modo = 2;  
+        antirrebote2 = 0;
+      }
+    }
+    /*-------------
+    ------- FUNCION AUXILIAR PARA EJECUCION DE PID
+    -------------*/
+    void ejecucion_pid(void)
+    {
+      //pseudo muestreo
+      unsigned long currentTime = millis();
+      delta_t = (currentTime - lastTime) / 1000.0;  // Convertir a segundos
+      if (delta_t >= DELTA) 
+      {
+        lastTime = currentTime; 
+        // Lectura del potenciometro (salida medida)
+        y_k = (analogRead(A0) * V_NOMINAL) / MAX_BITS_ADC;
+        // Calculo del error
+        e_k = r_k - y_k;
+        // Derivada del error
+        eD = (e_k - e_k_1) / delta_t;
+        // Integral del error
+        Ek = (E_k_1 + e_k) * delta_t;
+        // Ecuacion de diferencias del controlador PID
+        u_k = kP * e_k + (kI * Ek) + (kD * eD);
+        // Limitar la salida [-5V, 5V]
+        if (u_k > COTA_SUPERIOR_CONTROL) {
+          u_k = COTA_SUPERIOR_CONTROL;
+        } else if (u_k < COTA_INFERIOR_CONTROL) {
+          u_k = COTA_INFERIOR_CONTROL;
+        }
+        // Actualizacion de derivativo e integral anterior
+        e_k_1 = e_k;
+        E_k_1 = Ek;
+        // Convertir la salida de [-5V, 5V] a [0V, 5V] para el DAC
+        dacOutput = mapVoltageToDAC(u_k);
+        // Enviar hacia DAC
+        dac.setVoltage((int)dacOutput, false); 
+        // Verificar si el error esta dentro del rango permitido
+        if (e_k >= -0.05 && e_k <= 0.05) {
+          //Serial.println("Error dentro del rango, PID desactivado.");
+          modo = 0;  // Detener el PID si el error es muy pequeno
+        }
+      }
+    }
+    /*-------------------------------------------------------------------
+    ------------------------- LOOP PRINCIPAL
+    -------------------------------------------------------------------*/
+    void loop() {
+      gestion_botones();
+      // Ejecutar PID solo cuando se presione el boton de replicar
+      if (modo == 2) {
+        ejecucion_pid();
+      }
+    }
+```
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0cc6a834-b2ec-469e-a159-e4cd884d90e8" alt="Synth" width="500" />
