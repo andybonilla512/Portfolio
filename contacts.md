@@ -288,3 +288,140 @@ int main()
     return 0;
 }
 ```
+
+After compiling
+
+```bash
+g++ -std=c++17 Main.cpp -o main
+```
+And running it 
+
+```bash
+./main
+```
+It shows the following in console:
+```bash
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 1
+Contact name: Example Name
+Contact phone number: +502 1234 5678           
+Contact email: example@mail.com
+Contact added. 
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 1
+Contact name: example2
+Contact phone number: +502 8765 4321
+Contact email: examble2@mail.com
+Contact added. 
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 2
+#0:
+Name: Example Name , Phone Number: Example Name , Email: example@mail.com
+#1:
+Name: example2 , Phone Number: example2 , Email: examble2@mail.com
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 5           
+Type the name to be searched: Example Name
+Contact found in index #0.
+#0:
+Name: Example Name , Phone Number: Example Name , Email: example@mail.com
+#1:
+Name: example2 , Phone Number: example2 , Email: examble2@mail.com
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 3 
+Contact you want to edit: Example Name
+Invalid input, retry.
+Contact you want to edit: 0
+Type new contact name:example1
+Type new contact phone number:+502 1234 5678
+Type new contact email:example1@mail.com
+Contact edited succesfully
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 2
+#0:
+Name: example1 , Phone Number: example1 , Email: example1@mail.com
+#1:
+Name: example2 , Phone Number: example2 , Email: examble2@mail.com
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 4
+Contact you want to erase: 1
+Contact erased succesfully
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 2
+#0:
+Name: example1 , Phone Number: example1 , Email: example1@mail.com
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 0
+Logging out.
+```
