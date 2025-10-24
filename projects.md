@@ -11,6 +11,8 @@ permalink: /projects/
 <p align="center">
   <img src="https://github.com/user-attachments/assets/70ee8c3f-7947-4975-8217-c7c1a1fb8323" alt="Synth" width="400" />
 </p>
+Picture taken from [Source]([https://www.datocms-assets.com/38028/1632437837-1632421815-wireless-scada-3.jpg](https://sharedcontacts.com/wp-content/uploads/CONTACT-LIST-1200x675.png))
+
 
 ## ***Modular analog synthesizer upgrade and user configuration memory module design*** (Undergrad project)
 
