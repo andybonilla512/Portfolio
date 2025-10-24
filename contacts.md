@@ -53,7 +53,7 @@ class Contact{
         //method to show each contact data
         void Show_Contact() const {
             cout << "Name: " << contact_name 
-                << " , Phone Number: " << contact_name 
+                << " , Phone Number: " << contact_phone 
                 << " , Email: " << contact_email << "\n";
         }
         
@@ -132,7 +132,7 @@ class ContactList{
             if(!new_nom.empty()) 
                 c->Set_Contact_Name(new_nom);
             if(!new_num.empty())
-                c->Set_Contact_Phone(new_nom);
+                c->Set_Contact_Phone(new_num);
             if(!new_corr.empty())
                 c->Set_Contact_Email(new_corr);
             return true;
@@ -310,9 +310,9 @@ It shows the following in console:
 0: End session 
 ------------------------
 Option: 1
-Contact name: Example Name
-Contact phone number: +502 1234 5678           
-Contact email: example@mail.com
+Contact name: name1
+Contact phone number: +1 234
+Contact email: email
 Contact added. 
 
 ------ MAIN MENU ------
@@ -324,9 +324,9 @@ Contact added.
 0: End session 
 ------------------------
 Option: 1
-Contact name: example2
-Contact phone number: +502 8765 4321
-Contact email: examble2@mail.com
+Contact name: name2
+Contact phone number: +1 432
+Contact email: email2
 Contact added. 
 
 ------ MAIN MENU ------
@@ -339,9 +339,9 @@ Contact added.
 ------------------------
 Option: 2
 #0:
-Name: Example Name , Phone Number: Example Name , Email: example@mail.com
+Name: name1 , Phone Number: +1 234 , Email: email
 #1:
-Name: example2 , Phone Number: example2 , Email: examble2@mail.com
+Name: name2 , Phone Number: +1 432 , Email: email2
 
 ------ MAIN MENU ------
 1: Add new contact 
@@ -351,44 +351,12 @@ Name: example2 , Phone Number: example2 , Email: examble2@mail.com
 5: Search contact by name 
 0: End session 
 ------------------------
-Option: 5           
-Type the name to be searched: Example Name
-Contact found in index #0.
-#0:
-Name: Example Name , Phone Number: Example Name , Email: example@mail.com
-#1:
-Name: example2 , Phone Number: example2 , Email: examble2@mail.com
-
------- MAIN MENU ------
-1: Add new contact 
-2: List all contacts saved 
-3: Edit an existing contact 
-4: Delete an existing contact 
-5: Search contact by name 
-0: End session 
-------------------------
-Option: 3 
-Contact you want to edit: Example Name
-Invalid input, retry.
+Option: 3
 Contact you want to edit: 0
-Type new contact name:example1
-Type new contact phone number:+502 1234 5678
-Type new contact email:example1@mail.com
+Type new contact name:name1 
+Type new contact phone number:+1 234
+Type new contact email:email1
 Contact edited succesfully
-
------- MAIN MENU ------
-1: Add new contact 
-2: List all contacts saved 
-3: Edit an existing contact 
-4: Delete an existing contact 
-5: Search contact by name 
-0: End session 
-------------------------
-Option: 2
-#0:
-Name: example1 , Phone Number: example1 , Email: example1@mail.com
-#1:
-Name: example2 , Phone Number: example2 , Email: examble2@mail.com
 
 ------ MAIN MENU ------
 1: Add new contact 
@@ -412,7 +380,21 @@ Contact erased succesfully
 ------------------------
 Option: 2
 #0:
-Name: example1 , Phone Number: example1 , Email: example1@mail.com
+Name: name1 , Phone Number: +1 234 , Email: email1
+
+------ MAIN MENU ------
+1: Add new contact 
+2: List all contacts saved 
+3: Edit an existing contact 
+4: Delete an existing contact 
+5: Search contact by name 
+0: End session 
+------------------------
+Option: 5
+Type the name to be searched: name1
+Contact found in index #0.
+#0:
+Name: name1 , Phone Number: +1 234 , Email: email1
 
 ------ MAIN MENU ------
 1: Add new contact 
