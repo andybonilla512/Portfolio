@@ -6,7 +6,7 @@ permalink: /projects/
 
 ## ***C++ Object Oriented-Contact Manager***
 
-🎛️ [Contact Manager](contacts.md)
+📚 [Contact Manager](contacts.md)
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/70ee8c3f-7947-4975-8217-c7c1a1fb8323" alt="Synth" width="400" />
