@@ -4,6 +4,17 @@ title: Projects
 permalink: /projects/
 ---
 
+## ***C++ Object Oriented-Contact Manager***
+
+🎛️ [Contact Manager](contacts.md)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/70ee8c3f-7947-4975-8217-c7c1a1fb8323" alt="Synth" width="300" />
+</p>
+
+<img width="1200" height="675" alt="imagen" src="https://github.com/user-attachments/assets/70ee8c3f-7947-4975-8217-c7c1a1fb8323" />
+
+
 ## ***Modular analog synthesizer upgrade and user configuration memory module design*** (Undergrad project)
 
 🎛️ [Modular Analog Synth](synth.md)
