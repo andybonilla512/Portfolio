@@ -4,6 +4,20 @@ title: Projects
 permalink: /projects/
 ---
 
+
+
+## ***C++ Object Oriented-Dynamic Matrix Class***
+
+🧮 [Dynamic Matrix](calcs.md)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/70ee8c3f-7947-4975-8217-c7c1a1fb8323" alt="Synth" width="400" />
+</p>
+
+Picture taken from [Source](https://sharedcontacts.com/wp-content/uploads/CONTACT-LIST-1200x675.png)
+
+
+
 ## ***C++ Object Oriented-Contact Manager***
 
 📚 [Contact Manager](contacts.md)
