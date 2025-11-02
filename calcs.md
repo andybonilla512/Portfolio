@@ -1,5 +1,5 @@
 ---
-# C++ Object Oriented-Contact Manager
+# C++ Object Oriented-Dynamic Matrix Class
 ## Overview
 The program implements a Matrix class capable of dynamically creating and managing two-dimensional arrays using manual memory allocation through double pointers (double**). Each matrix object stores its dimensions (rows and cols) and the associated numerical elements in dynamically allocated memory.
 
