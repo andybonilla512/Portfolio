@@ -27,7 +27,7 @@ Electronics Engineer | Embedded Engineer | Data Engineer
 ---
 
 ## 🧠 Areas of Interest
-
+- Embedded software
 - PCB and embedded hardware design  
 - Signal and Power Integrity  
 - Research and continuous learning
