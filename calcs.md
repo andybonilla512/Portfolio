@@ -204,6 +204,9 @@ int main() {
         B_3b2.set(0,0,7);  B_3b2.set(0,1,8);
         B_3b2.set(1,0,9);  B_3b2.set(1,1,10);
         B_3b2.set(2,0,11); B_3b2.set(2,1,12);
+
+        cout << "MatriX A:\n"; A_2b3.print();
+        cout << "MatriX B:\n"; B_3b2.print();
         
         Matrix Mult_2b3_3b_2 = A_2b3*B_3b2;
         cout << "\nA * B:\n"; Mult_2b3_3b_2.print();
@@ -272,6 +275,13 @@ A * B:
 10 3 4 
 11 0 -1 
 12 3 -2 
+MatriX A:
+1 2 3 
+4 5 6 
+MatriX B:
+7 8 
+9 10 
+11 12 
 
 A * B:
 58 64 
