@@ -19,9 +19,6 @@ I am an Electronics Engineer with solid experience in programming microcontrolle
 **Electronics Engineering** (Graduate-June 2025)  
 Universidad del Valle de Guatemala (Guatemala)
 
-**Building Applications with RISC-V and FreeRTOS** (Coursing)  
-LinuxFoundationX LFD112x (via edX)
-
 ---
 ## 🏆 Awards 
 
