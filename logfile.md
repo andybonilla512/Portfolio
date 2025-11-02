@@ -78,3 +78,21 @@ int main() {
     return 0;
 }
 ```
+After compiling
+
+```bash
+g++ -std=c++17 Main.cpp -o main
+```
+And running it 
+
+```bash
+./main
+```
+It creates the following .txt in the workspace:
+```txt
+2025-11-02 13:42:00 - Logger initialized.
+2025-11-02 13:42:00 - System started
+2025-11-02 13:42:00 - Initializing sensors...
+2025-11-02 13:42:00 - All systems operational
+2025-11-02 13:42:00 - Logger terminated.
+```
