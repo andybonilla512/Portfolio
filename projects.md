@@ -13,7 +13,6 @@ permalink: /projects/
 <p align="center">
   <img src="https://github.com/user-attachments/assets/29256908-ee15-404b-b18e-604780711e99" alt="matrix" width="400" />
 </p>
-<img width="1579" height="1006" alt="imagen" src="" />
 
 Picture taken from [Source](https://scontent.fgua1-3.fna.fbcdn.net/v/t39.30808-6/306145007_537844388341730_8371677863086522927_n.png?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=CCZNgs-dwxoQ7kNvwEuMqvO&_nc_oc=AdlODFhALtaUCVnv5VugTkzIBnc8ryiXAhxBpDG-bVMtbNLqVkGSUOfBh3eOGg7uiUr1cwvGzZ8o6YeyMYsjcM8Y&_nc_zt=23&_nc_ht=scontent.fgua1-3.fna&_nc_gid=FiC4I8vPUiGAa1PgxqiAjQ&oh=00_AfhNNFxvYOFHstAy0N_MbQ2fSroPM41h_uMF0lN-dlYGtQ&oe=690D6C7C)
 
