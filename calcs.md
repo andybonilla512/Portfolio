@@ -217,3 +217,63 @@ int main() {
     return 0;
 }
 ```
+After compiling
+
+```bash
+g++ -std=c++17 Main.cpp -o main
+```
+And running it 
+
+```bash
+./main
+```
+It shows the following in console:
+```bash
+---2x2 MATRIX EXAMPLE
+MatriX A:
+1 2 
+3 4 
+MatriX B:
+5 6 
+7 8 
+
+A + B:
+6 8 
+10 12 
+
+A - B:
+-4 -4 
+-4 -4 
+
+A * B:
+19 22 
+43 50 
+---3x3 MATRIX EXAMPLE
+MatriX A:
+1 0 2 
+-1 3 1 
+3 2 0 
+MatriX B:
+2 1 0 
+3 0 -1 
+4 1 2 
+
+A + B:
+3 1 2 
+2 3 0 
+7 3 2 
+
+A - B:
+-1 -1 2 
+-4 3 2 
+-1 1 -2 
+
+A * B:
+10 3 4 
+11 0 -1 
+12 3 -2 
+
+A * B:
+58 64 
+139 154 
+```
