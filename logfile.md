@@ -1,6 +1,22 @@
 ---
 # C++ Object Oriented-logfile Generator
 ## Overview
+The project consists of creating a Logger class capable of generating and managing text files used for recording log messages. The class automatically writes entries that include the current date and time followed by a custom message (for example, “2025-03-01 14:05:22 – System started”).
+
+The file is opened when the Logger object is created (inside the constructor) and automatically closed when the object is destroyed (inside the destructor). This behavior implements the RAII principle (Resource Acquisition Is Initialization) — ensuring that system resources such as file handles are properly released even if an exception occurs.
+
+Internally, the class uses file stream objects (std::ofstream, std::ifstream) to handle input and output operations, and employs string manipulation tools (std::string, std::stringstream, std::put_time) to format messages and timestamps. The user can choose between different opening modes (std::ios::app, std::ios::trunc, std::ios::out) to either append to or overwrite existing log files.
+
+## Possible Applications in Engineering Software
+The Logger class models a fundamental component found in engineering and industrial software systems where traceability and event recording are critical. Its implementation can be extended or embedded into larger applications such as:
+
+* Process monitoring systems: logging machine status, temperature, or sensor data in real time.
+* Control and automation software: recording actuator commands, PID tuning steps, or alarms.
+* Simulation environments: documenting initialization parameters, iterations, and error conditions during computational runs.
+* Data acquisition tools: maintaining detailed measurement logs for laboratory or field experiments.
+* Embedded or IoT devices: storing system events locally for later analysis or debugging.
+
+By integrating this kind of logging mechanism, engineers can track system behavior, analyze faults, and ensure reproducibility—key aspects of reliability and safety in professional engineering environments.
 
 ```C
 /*-----------------------------------------------------------------------
