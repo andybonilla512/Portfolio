@@ -196,6 +196,7 @@ int main() {
         cout << "\nA - B:\n"; Subs_3b3.print();
         cout << "\nA * B:\n"; Mult_3b3.print();
         //2x3 and 3x2 matrix example
+        cout << "---2x3 and 3x2 MATRIX EXAMPLE\n";
         Matrix A_2b3(2,3);
         A_2b3.set(0,0,1); A_2b3.set(0,1,2); A_2b3.set(0,2,3);
         A_2b3.set(1,0,4); A_2b3.set(1,1,5); A_2b3.set(1,2,6);
@@ -275,6 +276,7 @@ A * B:
 10 3 4 
 11 0 -1 
 12 3 -2 
+---2x3 and 3x2 MATRIX EXAMPLE
 MatriX A:
 1 2 3 
 4 5 6 
