@@ -321,3 +321,109 @@ int main() {
     return 0;
 }
 ```
+After compiling
+
+```bash
+g++ -std=c++17 main.cpp -o main
+```
+And running it 
+
+```bash
+./main
+```
+It shows the following in console:
+```bash
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 1
+Name: Trial1
+Priority (1 high - 5 low): 1
+Task ID: 1
+
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 2
+===== TASKS =====
+ID: 1 | Title: Trial1 | Priority: 1 | Status: TO_DO
+==================
+
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 2
+===== TASKS =====
+ID: 1 | Title: Trial1 | Priority: 1 | Status: TO_DO
+==================
+
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 1
+Name: Trial2
+Priority (1 high - 5 low): 5
+Task ID: 2
+
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 3
+Task ID to edit: 1
+New name (empty = without change): 
+Nueva prioridad (>0 to change, otherwise mantein): 
+0
+STATUS (0=TO_DO, 1=IN_PROGRESS, 2=DONE): 1
+Edited.
+
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 2
+===== TASKS =====
+ID: 1 | Title: Trial1 | Priority: 1 | Status: IN_PROGRESS
+ID: 2 | Title: Trial2 | Priority: 5 | Status: TO_DO
+==================
+
+==== MENU ====
+1) Add task
+2) List tasks
+3) Edit task
+4) Delete task
+0) Log out
+Option: 0
+Logging out
+```
+
+It creates the following .txt in the workspace:
+```txt
+2025-11-19 22:50:55 - Logger initialized
+2025-11-19 22:51:03 - ADD id=1 title="Task1" priority=1
+2025-11-19 22:51:08 - ADD id=2 title="Task2" priority=2
+2025-11-19 22:51:14 - ADD id=3 title="Task3" priority=5
+2025-11-19 22:51:44 - EDIT id=1 title="Task1" priority=1 status=IN_PROGRESS
+2025-11-19 22:51:55 - Logger terminated
+2025-11-19 23:10:50 - Logger initialized
+2025-11-19 23:11:00 - ADD id=1 title="Trial1" priority=1
+2025-11-19 23:11:09 - ADD id=2 title="Trial2" priority=5
+2025-11-19 23:11:24 - EDIT id=1 title="Trial1" priority=1 status=IN_PROGRESS
+2025-11-19 23:11:35 - Logger terminated
+```
