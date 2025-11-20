@@ -6,7 +6,7 @@ permalink: /projects/
 
 ## ***C++ Object Oriented-Task Manager CLI with Dynamic Memory and RAII Logging***
 
-💬 [Task Manager](tas_manager.md)
+💬 [Task Manager](task_manager.md)
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/81c5e2c5-ddd2-447c-99d3-f379e77a3f2c" alt="matrix" width="400" />
