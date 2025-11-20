@@ -4,6 +4,17 @@ title: Projects
 permalink: /projects/
 ---
 
+## ***C++ Object Oriented-Task Manager CLI with Dynamic Memory and RAII Logging***
+
+💬 [Task Manager](tas_manager.md)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/81c5e2c5-ddd2-447c-99d3-f379e77a3f2c" alt="matrix" width="400" />
+</p>
+
+Picture taken from [Source](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chanty.com%2Fblog%2Fes%2Fadministrador-de-tareas%2F&psig=AOvVaw2LNO9f6d3IpzbSyLsEm8Ov&ust=1763702132604000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNCX-sr8_5ADFQAAAAAdAAAAABAE)
+
+
 ## ***C++ Object Oriented-Logfile generator***
 
 💬 [Logfile generator](logfile.md)
