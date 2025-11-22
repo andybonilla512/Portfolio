@@ -14,4 +14,4 @@ permalink: /projects/
 * 🧮 [Dynamic Matrix](projects/electronica/calcs.md)
 * 📚 [Contact Manager](projects/electronica/contacts.md)
 * 🎛️ [Modular Analog Synth](projects/electronica/synth.md)
-* 🖥️ [[Scada](projects/electronica/scada.md)
+* 🖥️ [Scada](projects/electronica/scada.md)
