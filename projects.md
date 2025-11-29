@@ -4,11 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-## ***Data Engineering***
-* 🗄️ [Data warehouse](projects/data/data_warehouse.md)
-
-
-## ***Embedded Engineering***
+## ***Electronics Engineering***
 * 📉 [Task Manager](projects/electronica/task_manager.md)
 * 💬 [Logfile generator](projects/electronica/logfile.md)
 * 🧮 [Dynamic Matrix](projects/electronica/calcs.md)
