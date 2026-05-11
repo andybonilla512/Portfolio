@@ -4,6 +4,9 @@ title: Projects
 permalink: /projects/
 ---
 
+## ***Data Engineering***
+* 📉 [Task Manager](projects/data/dwh1/1_bronze.md)
+
 ## ***Electronics Engineering***
 * 📉 [Task Manager](projects/electronica/task_manager.md)
 * 💬 [Logfile generator](projects/electronica/logfile.md)
