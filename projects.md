@@ -5,7 +5,7 @@ permalink: /projects/
 ---
 
 ## ***Data Engineering***
-* 📉 [On-Premise Data Warehouse](projects/data/dwh1/dwh1_index.md)
+* 📉 [On-Premise Data Warehouse](projects/electronica/task_manager.md)
 
 ## ***Electronics Engineering***
 * 📉 [Task Manager](projects/electronica/task_manager.md)
